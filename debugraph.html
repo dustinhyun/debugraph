@@ -1,0 +1,64 @@
+
+<html>
+
+<head>
+<title> Debugraph </title>
+<style>
+.panel-wrapper {
+    border: 1px gray solid;
+    border-radius: 20px;
+    box-sizing: border-box;
+    float: left;
+    height: calc(100% - 40px);
+    margin: 20px;
+    outline: none;
+    overflow: hidden;
+    padding: 10px;
+    width: calc(50% - 40px);
+}
+.panel-wrapper > div {
+    height: 100%;
+    width: 100%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="libs/sigma.min.js"></script>
+</head>
+
+<body>
+
+<div class="panel-wrapper">
+    <div id="graph-panel"></div>
+</div>
+<textarea class="panel-wrapper" id="code-panel">
+var sampleData = {
+    "nodes": [
+        { "id": "n0", "label": "A node", "x": 0, "y": 0, "size": 3 },
+        { "id": "n1", "label": "Another node", "x": 3, "y": 1, "size": 2 },
+        { "id": "n2", "label": "And a last one", "x": 1, "y": 3, "size": 1 }
+    ],
+    "edges": [
+        { "id": "e0", "source": "n0", "target": "n1" },
+        { "id": "e1", "source": "n1", "target": "n2" },
+        { "id": "e2", "source": "n2", "target": "n0" }
+    ]
+};
+</textarea>
+
+<script>
+
+function run() {
+    eval($("#code-panel").val());
+    $("#graph-panel").html("");
+    var s = new sigma({
+        graph: sampleData,
+        container: 'graph-panel'
+    });
+}
+
+run();
+
+</script>
+</body>
+
+</html>
