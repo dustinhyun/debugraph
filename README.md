@@ -5,7 +5,7 @@ Had been frustrated in debugging a graph?
 
 ```
 $ git clone THIS_REPOSITORY
-$ python -m SimpleHTTPServer 8080
+$ python -m SimpleHTTPServer 1234
 ```
 
 Open http://localhost:8080:debugraph.html in your browser to see below.
