@@ -8,7 +8,7 @@ $ git clone THIS_REPOSITORY
 $ python -m SimpleHTTPServer 1234
 ```
 
-Open http://localhost:1234:debugraph.html in your browser to see below.
+Open http://localhost:1234/debugraph.html in your browser to see below.
 
 ![Snapshot](https://raw.githubusercontent.com/wiki/dustinhyun/debugraph/images/debugraph0.png)
 
