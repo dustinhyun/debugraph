@@ -5,6 +5,7 @@ Had been frustrated in debugging a graph?
 
 ```
 $ git clone THIS_REPOSITORY
+$ cd debugraph
 $ python -m SimpleHTTPServer 1234
 ```
 
