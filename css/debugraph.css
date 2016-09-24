@@ -1,0 +1,32 @@
+.panel-wrapper {
+    border: 1px gray solid;
+    border-radius: 20px;
+    box-sizing: border-box;
+    float: left;
+    height: calc(100% - 40px);
+    margin: 20px;
+    outline: none;
+    overflow: hidden;
+    padding: 10px;
+    width: calc(50% - 40px);
+}
+.panel-wrapper > div {
+    height: 100%;
+    width: 100%;
+}
+.panel-wrapper.right {
+    border: none;
+    border-radius: 0px;
+    padding: 0px;
+}
+#code-panel {
+    height: calc(100% - 40px);
+    overflow-y: scroll;
+    padding: 10px;
+    width: 100%;
+}
+.panel-wrapper > button {
+    height: 30px;
+    margin-top: 10px;
+    width: 100%;
+}
