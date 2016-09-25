@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="css/debugraph.css">
 <script type="text/javascript" src="libs/sigma.min.js"></script>
 <script type="text/javascript" src="libs/sigma.layout.forceAtlas2.min.js"></script>
+<script type="text/javascript" src="libs/sigma.renderers.edgeLabels.min.js"></script>
 <script type="text/javascript" src="libs/jquery.min.js"></script>
 </head>
 
@@ -63,7 +64,13 @@ function run() {
 
     $("#graph-panel").html("");
 
-    gSigma = new sigma({ graph: graph, container: 'graph-panel' });
+    gSigma = new sigma({
+        graph: graph,
+        renderer: {
+            container: 'graph-panel',
+            type: "canvas"
+        }
+    });
     
     gSigma.startForceAtlas2({
         worker: true,
