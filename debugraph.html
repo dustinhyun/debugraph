@@ -77,10 +77,20 @@ function covertToGraphData(s) {
     var graph = { nodes: [], edges: [] };
 
     for (var i in nodeIdList) {
-        var id = nodeIdList[i];
+        var prop = getProperty(nodeIdList[i]);
+        var id = prop.id;
         var node = {
             id: id, label: id, x: Math.random(), y: Math.random(), size: 10 
         };
+
+        if ("color" in prop) {
+            node.color = prop.color;
+        }
+
+        if ("label" in prop) {
+            node.label = prop.label;
+        }
+
         graph.nodes.push(node);
     }
 
