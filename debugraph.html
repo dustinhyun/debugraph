@@ -24,6 +24,47 @@ a-b a-c a-d c-e e-f</textarea>
 
 <script>
 
+function getProperty(itemString) {
+    var result = {
+        id: itemString
+    };
+
+    var indexLeft = itemString.indexOf("(");
+    var indexRight = itemString.indexOf(")");
+
+    if (indexLeft < 0 || indexRight < 0 || indexLeft >= indexRight) {
+        return result;
+    }
+
+    result.id = itemString.substring(0, indexLeft); // Trim "(...)"
+
+    var propString = itemString.substring(indexLeft + 1, indexRight);
+
+    if (propString.length == 0) {
+        return result;
+    }
+
+    var tokens = propString.split(",");
+
+    // E.g.
+    // itemString: NODE_OR_EDGE(black,sampleLabel)
+    // result = {
+    //  id: NODE_OR_EDGE,
+    //  color: "black",
+    //  label: "sampleLabel"
+    // }
+
+    if (tokens.length > 0 && tokens[0].trim().length > 0) {
+        result.color = tokens[0].trim();
+    }
+
+    if (tokens.length > 1 && tokens[1].trim().length > 0) {
+        result.label = tokens[1].trim();
+    }
+
+    return result;
+}
+
 function covertToGraphData(s) {
     
     var lines = s.split("\n");
@@ -44,11 +85,19 @@ function covertToGraphData(s) {
     }
 
     for (var i in edgeString) {
-        var id = edgeString[i];
+        var prop = getProperty(edgeString[i]);
+        var id = prop.id;
         var nodes = id.split("-");
-        var edge = {
-            id: id, source: nodes[0], target: nodes[1]
-        };
+        var edge = { id: id, source: nodes[0], target: nodes[1] };
+
+        if ("color" in prop) {
+            edge.color = prop.color;
+        }
+
+        if ("label" in prop) {
+            edge.label = prop.label;
+        }
+
         graph.edges.push(edge);
     }
 
