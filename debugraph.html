@@ -69,10 +69,9 @@ function covertToGraphData(s) {
     
     var lines = s.split("\n");
 
-    var nodeIdList = lines[0]
-        .trim().split(" ").filter(function(e) { return e.length != 0; });
-    var edgeString = lines[1]
-        .trim().split(" ").filter(function(e) { return e.length != 0; });
+    var regex = /[^\(\s]+(\([^\)]+\))*/g;
+    var nodeIdList = lines[0].match(regex);
+    var edgeString = lines[1].match(regex);
 
     var graph = { nodes: [], edges: [] };
 
