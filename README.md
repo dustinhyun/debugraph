@@ -23,7 +23,7 @@ Also with label.
 
 ![Snapshot](https://raw.githubusercontent.com/wiki/dustinhyun/debugraph/images/debugraph2.png)
 
-Use (,labelName) if only label is to be added without color(Don't use space in label name).
+Use (,labelName) if only label is to be added without color.
 
 ![Snapshot](https://raw.githubusercontent.com/wiki/dustinhyun/debugraph/images/debugraph3.png)
 
